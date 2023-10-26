@@ -53,7 +53,6 @@ const ProductDetails = (props: ProductDetails) => {
       return { ...prev, quantity: prev.quantity++ };
     });
   }, [cartProduct]);
-  console.log(cartProduct.quantity);
   const handleQtydecrease = useCallback(() => {
     if (cartProduct.quantity === 1) {
       return;

@@ -20,6 +20,7 @@ const HomeBanner = () => {
           <Image
             src={"/img/banner-image.png"}
             fill
+            sizes="w-full"
             alt="Banner Image"
             className="object-contain"
           />
