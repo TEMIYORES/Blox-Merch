@@ -1,5 +1,7 @@
 "use client";
+import Button from "@/app/components/Button";
 import SetColor from "@/app/components/products/SetColor";
+import SetQuantity from "@/app/components/products/SetQuantity";
 import { Rating } from "@mui/material";
 import React, { useCallback, useState } from "react";
 type ProductDetails = {
@@ -25,7 +27,7 @@ const Horizontal = () => {
 };
 const ProductDetails = (props: ProductDetails) => {
   const { product } = props;
-  const [cartProduct, setCardProduct] = useState<cartProductType>({
+  const [cartProduct, setCartProduct] = useState<cartProductType>({
     id: product.id,
     name: product.name,
     description: product.description,
@@ -37,13 +39,29 @@ const ProductDetails = (props: ProductDetails) => {
   });
   const handleColorSet = useCallback(
     (value: selectedImgType) => {
-      setCardProduct((prev) => {
+      setCartProduct((prev) => {
         return { ...prev, selectImg: value };
       });
     },
     [cartProduct.selectImg]
   );
-
+  const handleQtyIncrease = useCallback(() => {
+    if (cartProduct.quantity === 99) {
+      return;
+    }
+    setCartProduct((prev) => {
+      return { ...prev, quantity: prev.quantity++ };
+    });
+  }, [cartProduct]);
+  console.log(cartProduct.quantity);
+  const handleQtydecrease = useCallback(() => {
+    if (cartProduct.quantity === 1) {
+      return;
+    }
+    setCartProduct((prev) => {
+      return { ...prev, quantity: prev.quantity-- };
+    });
+  }, [cartProduct]);
   const productRating =
     product.reviews.reduce(
       (accumulator: number, item: any) => accumulator + item.rating,
@@ -81,9 +99,14 @@ const ProductDetails = (props: ProductDetails) => {
           handleColorSet={handleColorSet}
         />
         <Horizontal />
-        <div>quality</div>
+        <SetQuantity
+          cartProduct={cartProduct}
+          isCartCounter={false}
+          handleQtyIncrease={handleQtyIncrease}
+          handleQtydecrease={handleQtydecrease}
+        />
         <Horizontal />
-        <div>add to cart</div>
+        <Button label="Add to Cart" onClick={() => {}} />
       </div>
     </div>
   );
