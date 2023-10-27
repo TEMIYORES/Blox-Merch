@@ -2,7 +2,6 @@ import React from "react";
 import Container from "./components/Container";
 import HomeBanner from "./components/HomeBanner";
 import { products } from "@/utils/products";
-import { truncateText } from "@/utils/truncateText";
 import ProductCard from "./components/products/ProductCard";
 const Home = () => {
   return (

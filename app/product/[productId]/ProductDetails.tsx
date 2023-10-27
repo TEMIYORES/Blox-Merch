@@ -2,6 +2,7 @@
 import Button from "@/app/components/Button";
 import SetColor from "@/app/components/products/SetColor";
 import SetQuantity from "@/app/components/products/SetQuantity";
+import ProductImage from "@/app/components/products/productImage";
 import { Rating } from "@mui/material";
 import React, { useCallback, useState } from "react";
 type ProductDetails = {
@@ -67,8 +68,12 @@ const ProductDetails = (props: ProductDetails) => {
       0
     ) / product.reviews.length;
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-      <div>Images</div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 py-10 sm:py-20">
+      <ProductImage
+        cartProduct={cartProduct}
+        product={product}
+        handleSelectColor={handleColorSet}
+      />
       <div className="flex flex-col gap-1 text-sm">
         <h2 className="text-3xl font-medium text-slate-700">{product.name}</h2>
         <div className="flex items-center gap-1">
