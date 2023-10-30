@@ -22,6 +22,7 @@ const ProductImage: React.FC<productImageType> = ({
         {product.images.map((image) => {
           return (
             <div
+              key={image.color}
               className={`relative w-[80%] aspect-square rounded ${
                 cartProduct.selectImg.color === image.color &&
                 "border border-teal-500"

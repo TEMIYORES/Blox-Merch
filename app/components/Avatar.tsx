@@ -7,6 +7,7 @@ type avatarType = {
 const Avatar: React.FC<avatarType> = ({ src }) => {
   return src ? (
     <Image
+      sizes="w-full"
       alt="Avatar"
       src={src}
       className="rounded-full"
