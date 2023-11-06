@@ -45,7 +45,7 @@ export const CartContextProvider = (props: PropsType) => {
       return updatedCart;
     });
     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
-    toast.success("Product added to cart");
+    toast.success("Product added to cart successfully");
   }, []);
   const handleRemoveProductFromCart = useCallback(
     (product: cartProductType) => {
