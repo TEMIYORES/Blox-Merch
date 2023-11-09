@@ -1,7 +1,7 @@
 "use client";
 import { useCart } from "@/hooks/useCart";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MdArrowBack } from "react-icons/md";
 import Heading from "../components/Heading";
 import Button from "../components/Button";
@@ -9,31 +9,8 @@ import ItemContent from "./ItemContent";
 import { formatPrice } from "@/utils/formatPrice";
 
 const CartClient = () => {
-  const { cartProducts, handleClearCart } = useCart();
-  const [cartTotalAmount, setCartTotalAmount] = useState(0);
-  const [cartTotalQty, setCartTotalQty] = useState(0);
+  const { cartProducts, handleClearCart, cartTotalAmount } = useCart();
 
-  useEffect(() => {
-    const getTotal = () => {
-      if (cartProducts) {
-        const { total, qty } = cartProducts?.reduce(
-          (acc, product) => {
-            const totalAmount = product.price * product.quantity;
-            acc.total += totalAmount;
-            acc.qty += product.quantity;
-            return acc;
-          },
-          {
-            total: 0,
-            qty: 0,
-          }
-        );
-        setCartTotalAmount(total);
-        setCartTotalQty(qty);
-      }
-    };
-    getTotal();
-  }, [cartProducts]);
   if (!cartProducts || cartProducts.length === 0) {
     return (
       <div className="flex flex-col items-center">
