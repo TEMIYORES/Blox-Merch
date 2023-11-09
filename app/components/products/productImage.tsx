@@ -1,14 +1,14 @@
 "use client";
-import { product } from "@/utils/product";
 import {
   cartProductType,
   selectedImgType,
 } from "@/app/product/[productId]/ProductDetails";
+import { products } from "@/utils/products";
 import Image from "next/image";
 
 type productImageType = {
   cartProduct: cartProductType;
-  product: typeof product;
+  product: (typeof products)[0];
   handleSelectColor: (value: selectedImgType) => void;
 };
 const ProductImage: React.FC<productImageType> = ({
